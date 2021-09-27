@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro Pessoal</title>
+    </head>
+
+    <body>
+        <div>
+            <h1>Cadastro Pessoal </h1>
+        </div>
+        <p>Preencha o formulário abaixo, com os seus dados, e lembre-se que os campos com * (asterísco) são de preenchimento obrigatório:
+
+        </p>
+        <! - fomr é a tag própria para criação de formulários em páginas em html -> 
+        <form name="cadastro">
+            <! -  o name = cadastro serve para conexão com java script para que sejam executadas as funções do java script dentro do formulário ->
+
+            <fieldset>
+                <! - fieldset é um agrupador de elementos, o qual neste caso, agrupa campos do mesmo tipo, para melhor organização no site, com a sua legenda respectiva explicando os tipos de campo agrupados naquele local -> 
+                <legend>Dados Pessoais</legend>
+                <label for="nome">*Nome:</label>
+                <input type="text" name="nome" required id="nome">
+
+                <label for="sobrenome">*Sobrenome:</label>
+                <input type="text" name="sobrenome" required id="sobrenome">
+                <! - dentro da tag input, a qual  cria o campo de edição, para o usuário preencher, exite o atributo requiredque torna o campo obrigatório, ou seja, se não for preenchido o o fomrulário não será submetido -> 
+
+                <label for="cpf">*CPF:</label>
+                <input type="text" name="cpf" required id="cpf" placeholder="Digite somente números" maxlength="14" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" onkeypress="formataCpf()">
+                <! - o atributo placeholdercria um texto explicativo para orientar o usuário, e o maxlengthdetermina quantos caracteres podem ser inseridos no campo, o patterndetermina o formato de rsposta que pode ser aceito no campo, inclusive determina os tipos de caracterespermitidos, e o onkeypressé o evento java script que acionará uma função java script ->
+
+                <label for="rg">*RG:</label>
+                <input type="text" name="rg" required id="rg">
+
+                <label for="data">Data de Nascimento:</label>
+                <input type="date" name="data" id="data">
+                <! - o input tipo date, é a tag utilizada para criar campos de edição que receberão datas ->
+
+                <label for="sexo">Sexo:</label>
+                <select name="sexo" id="sexo">
+                    <option value="selecione">Selecione...</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="masculino">Masculino</option>
+                </select>
+                <! - a tag selectserve para criar um menu de controle com opções para que o usuário escolha uma, e as opções são criadas com o elemento option
+            </fieldset>
+
+            <fieldset>
+                <legend>Dados de endereço</legend>
+                <label for="cep">*CEP:</label>
+                <input type="text" name="cep" required id="cep" maxlength="8" onblur="consultaCEP()">
+                <! - o evento onblur aciona a função java script que verifica o CEP informado pelo usuário ->
+
+                <label for="endereco">*Endereço:</label>
+                <input type="text" name="endereco" required id="endereco">
+
+                <label for="numero">*Número:</label>
+                <input type="text" name="numero" required id="numero">
+
+                <label for="bairro">*Bairro</label>
+                <input type="text" name="bairro" required id="bairro">
+
+                <label for="cidade">*Cidade</label>
+                <input type="text" name="cidade" required id="cidade">
+
+                <label for="estado">*Estado:</label>
+                <input type="text" name="estado" required id="estado">
+            </fieldset>
+
+            <fieldset>
+                <legend>Dados para contato</legend>
+                <label for="telefone">Telefone fixo:</label>
+                <input type="tel" name="telefone" id="telefone" maxlength="13" placeholder="Digite o número do seu telefone fixo  com DDD, somente números" onkeypress="formataTelefoneFixo()" >
+                <label for="celular">*Telefone Celular:</label>
+                <input type="tel" name="celular" required id="celular" maxlength="14" placeholder="Digite o número do seu celular com DDD, somente números" onkeypress="formataCelular()">
+                <label for="email">*E-mail:</label>
+                <input type="email" name="email" id="email" placeholder="Digite seu e-meilneste formato:examplo@gama.com">
+                <! - inputtipo E-mail cria um campo de edição que somente aceita resposta do usuário em formato de E-mail->
+            </fieldset>
+
+            <label for="mensagem">Sua mensagem(Deixe sua sugestão, elogio, ou crítica, sua opinião importa muito para nós):</label>
+            <textarea name="mensagem" id="mensagem" cols="30" rows="10"></textarea>
+            <! - textarea é um elemento do html que cria um campo de edição que suporta várias linhas, que podem ser limitadas nos atributos da tag(atributo cals e rows e ), utilizado para dar oportunidade do usuário escrever sua mensagem dentro do formulário para interagir com o site ->
+
+            <button type="submit" name="enviar" onclick="validarValidar()">Enviar cadastro</button>
+            <! - button tipo submit, é utilizado para submeter  o formulário, ou seja, enviar o cadastro do usuário, e o evento onclick serve para acionar uma função java script que neste caso vai verificasr se os campos obrigatórios foram preenchidos ->
+        </form>
+        <footer>
+            <p>© 2021 Victor Araujo  - todos os direitos reservados <br>
+                <a href="https://www.linkedin.com/in/victor-araújo-dos-santos-987074221">Acesse meu perfil no linkedinn, e conexte-se comigo:</a>
+
+            </p>
+        </footer>
+
+        <script src="javascript.js" type="text/javascript"></script>
+    </body>
+</html>
